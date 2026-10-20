@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QueueFlow | Queue Management</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-icon">Q</span><span>QueueFlow</span></div>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-item active" href="#"><span>▦</span> Overview</a>
+      <a class="nav-item" href="#queue-panel"><span>☷</span> Live Queue</a>
+      <div class="sidebar-bottom">
+        <div class="help-icon">?</div>
+        <div><strong>Need help?</strong><small>Learn how QueueFlow works</small></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">WORKSPACE / OVERVIEW</div><h1>Queue Management</h1><p class="subtitle">Keep every line moving, one customer at a time.</p></div>
+        <div class="top-actions"><span class="status-dot"></span><span class="open-label">Service counter open</span><div class="avatar">JF</div></div>
+      </header>
+
+      <section class="welcome-card">
+        <div><div class="welcome-tag">TODAY'S SERVICE</div><h2>Good day, team 👋</h2><p>Manage arrivals and serve customers in the order they join.</p></div>
+        <div class="welcome-art"><div class="art-circle"></div><div class="art-card">NOW SERVING <strong id="heroServing">—</strong></div></div>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card"><div class="stat-top"><span class="stat-icon purple">☷</span><span class="stat-caption">LIVE</span></div><div class="stat-label">People in queue</div><div class="stat-number" id="queueCount">3</div><div class="stat-foot"><span class="tiny-dot purple-dot"></span> Waiting to be served</div></article>
+        <article class="stat-card"><div class="stat-top"><span class="stat-icon green">✓</span><span class="stat-caption">COMPLETED</span></div><div class="stat-label">Served today</div><div class="stat-number" id="servedCount">12</div><div class="stat-foot served-foot"><span>Customers helped today</span><button class="reset-served-btn" id="resetServedBtn" type="button">Reset count</button></div></article>
+        <article class="stat-card"><div class="stat-top"><span class="stat-icon orange">◷</span><span class="stat-caption">ESTIMATE</span></div><div class="stat-label">Estimated wait</div><div class="stat-number" id="waitTime">9 <small>min</small></div><div class="stat-foot wait-foot"><span>About 3 min per person</span><button class="reset-wait-btn" id="resetWaitBtn" type="button">Reset count</button></div></article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel add-panel">
+          <div class="panel-heading"><div><h3>Add to queue</h3><p>Register a new arrival</p></div><span class="panel-symbol">＋</span></div>
+          <form id="customerForm">
+            <label for="customerName">Customer name</label>
+            <input id="customerName" type="text" placeholder="e.g. Ama Mensah" maxlength="45" required />
+            <label for="serviceType">Service needed</label>
+            <select id="serviceType"><option>General enquiry</option><option>Payment</option><option>Registration</option><option>Technical support</option></select>
+            <button class="primary-btn" type="submit">＋ Add customer to queue</button>
+          </form>
+          <div class="tip"><span>✦</span><p><strong>First in, first out</strong><br />New arrivals join the end of the line and are served in order.</p></div>
+        </article>
+
+        <article class="panel queue-panel" id="queue-panel">
+          <div class="panel-heading"><div><h3>Live queue</h3><p>Your next customers are lined up here</p></div><span class="queue-badge" id="liveBadge">3 waiting</span></div>
+          <div class="queue-table-head"><span>POSITION / CUSTOMER</span><span>SERVICE</span><span>STATUS</span></div>
+          <div id="queueList" class="queue-list"></div>
+          <div class="queue-actions"><button class="secondary-btn" id="clearBtn" type="button">Clear queue</button><button class="primary-btn call-btn" id="nextBtn" type="button">Call next customer →</button></div>
+        </article>
+      </section>
+      <footer>QueueFlow <span>•</span> A simple FIFO queue demonstration built with HTML, CSS and JavaScript.</footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
